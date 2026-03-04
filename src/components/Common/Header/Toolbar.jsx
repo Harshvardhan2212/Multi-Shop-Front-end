@@ -49,33 +49,29 @@ export default function Toolbar() {
         >
           <div className="d-inline-flex align-items-center h-100 navbar p-0">
             <Link
-              className={`px-2 nav-link ${
-                location.pathname === "/about" && "active text-warning"
-              }`}
+              className={`px-2 nav-link ${location.pathname === "/about" && "active text-warning"
+                }`}
               to="/about"
             >
               About
             </Link>
             <Link
-              className={`px-2 nav-link ${
-                location.pathname === "/contact" && "active text-warning"
-              }`}
+              className={`px-2 nav-link ${location.pathname === "/contact" && "active text-warning"
+                }`}
               to="/contact"
             >
               Contact
             </Link>
             <Link
-              className={`px-2 nav-link ${
-                location.pathname === "/help" && "active text-warning"
-              }`}
+              className={`px-2 nav-link ${location.pathname === "/help" && "active text-warning"
+                }`}
               to="/help"
             >
               Help
             </Link>
             <Link
-              className={`px-2 nav-link ${
-                location.pathname === "/faqs" && "active text-warning"
-              }`}
+              className={`px-2 nav-link ${location.pathname === "/faqs" && "active text-warning"
+                }`}
               to="/faqs"
             >
               FAQs
@@ -172,53 +168,53 @@ export default function Toolbar() {
                 )}
               </div>
             </div>
-            <div className="btn-group google_translate_element">
-              <button
-                type="button"
-                className="btn btn-sm btn-light dropdown-toggle"
-                data-toggle="dropdown"
-              >
-                {selectedLanguage ? selectedLanguage.toUpperCase() : "EN"}
-              </button>
-              <div className="dropdown-menu dropdown-menu-right">
-                <button
-                  className="dropdown-item"
-                  onClick={() => selectLanguage("en")}
-                  type="button"
-                >
-                  EN
-                </button>
-                <button
-                  className="dropdown-item"
-                  onClick={() => selectLanguage("hi")}
-                  type="button"
-                >
-                  HI
-                </button>
-
-                <button
-                  className="dropdown-item"
-                  onClick={() => selectLanguage("gu")}
-                  type="button"
-                >
-                  GU
-                </button>
-                <button
-                  className="dropdown-item"
-                  onClick={() => selectLanguage("fr")}
-                  type="button"
-                >
-                  RU
-                </button>
-                <button
-                  className="dropdown-item"
-                  onClick={() => selectLanguage("ar")}
-                  type="button"
-                >
-                  AR
-                </button>
-              </div>
-            </div>
+            {/* <div className="btn-group google_translate_element"> */}
+            {/*   <button */}
+            {/*     type="button" */}
+            {/*     className="btn btn-sm btn-light dropdown-toggle" */}
+            {/*     data-toggle="dropdown" */}
+            {/*   > */}
+            {/*     {selectedLanguage ? selectedLanguage.toUpperCase() : "EN"} */}
+            {/*   </button> */}
+            {/*   <div className="dropdown-menu dropdown-menu-right"> */}
+            {/*     <button */}
+            {/*       className="dropdown-item" */}
+            {/*       onClick={() => selectLanguage("en")} */}
+            {/*       type="button" */}
+            {/*     > */}
+            {/*       EN */}
+            {/*     </button> */}
+            {/*     <button */}
+            {/*       className="dropdown-item" */}
+            {/*       onClick={() => selectLanguage("hi")} */}
+            {/*       type="button" */}
+            {/*     > */}
+            {/*       HI */}
+            {/*     </button> */}
+            {/**/}
+            {/*     <button */}
+            {/*       className="dropdown-item" */}
+            {/*       onClick={() => selectLanguage("gu")} */}
+            {/*       type="button" */}
+            {/*     > */}
+            {/*       GU */}
+            {/*     </button> */}
+            {/*     <button */}
+            {/*       className="dropdown-item" */}
+            {/*       onClick={() => selectLanguage("fr")} */}
+            {/*       type="button" */}
+            {/*     > */}
+            {/*       RU */}
+            {/*     </button> */}
+            {/*     <button */}
+            {/*       className="dropdown-item" */}
+            {/*       onClick={() => selectLanguage("ar")} */}
+            {/*       type="button" */}
+            {/*     > */}
+            {/*       AR */}
+            {/*     </button> */}
+            {/*   </div> */}
+            {/* </div> */}
           </div>
           <div className="d-inline-flex align-items-center d-block d-lg-none">
             <Link to="/wishlist" className="btn px-0 ml-3">
