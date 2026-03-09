@@ -6,38 +6,50 @@ import ErrorPage from "../components/Common/ErrorPage";
 import Breadcrumbs from "./Breadcrumbs";
 import ProtectedRoute from "./ProtectedRoute";
 import LoginProtectedRoute from "./LoginProtectedRoute";
+import AdminStructure from "../layout/AdminStructure";
 
 export default function RoutesPath() {
-  
+
   return (
-      <>
-    <Routes>
-      {routesObject.map((route, index) => (
-        <Route
-        key={index}
-        element={
-          route.isAuth ? (
-            <>
-            <ProtectedRoute><Structure>{route.element}</Structure></ProtectedRoute>
-            </>
-            ) : route.isLoggedIn ? (
-              <LoginProtectedRoute><Structure>{route.element}</Structure></LoginProtectedRoute>
-            ) : <Structure>{route.element}</Structure>
-          }
-          path={route.path}
-        >
-          {route.children &&
-            route.children.map((paths, index) => (
-              <Route
-                key={index}
-                element={paths.element}
-                path={paths.path}
-              ></Route>
-            ))}
-        </Route>
-      ))}
-      <Route path="*" element={<ErrorPage />} />
-    </Routes>
+    <>
+      <Routes>
+        {routesObject.map((route, index) => {
+          const expressionElement = route.layout === "user" ? (
+            <Structure>
+              {route.element}
+            </Structure>
+          ) : (
+            <AdminStructure>
+              {route.element}
+            </AdminStructure>
+          )
+
+          return (
+            <Route
+              key={index}
+              element={
+                route.isAuth ? (
+                  <>
+                    <ProtectedRoute>
+                      {expressionElement}
+                    </ProtectedRoute>
+                  </>
+                ) : route.isLoggedIn ? (
+                  <LoginProtectedRoute>
+                    {expressionElement}
+                  </LoginProtectedRoute>
+                ) : (
+                  expressionElement
+                )
+              }
+              path={route.path}
+            >
+            </Route>
+          )
+        })}
+        <Route path="*" element={<ErrorPage />} />
+
+      </Routes>
     </>
   );
 }
