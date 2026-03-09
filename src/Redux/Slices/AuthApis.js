@@ -36,7 +36,6 @@ export const authApi = api.injectEndpoints({
         method: "POST",
         body: data,
       }),
-
     }),
     postChangePasswordData: builder.mutation({
       query: (data) => ({

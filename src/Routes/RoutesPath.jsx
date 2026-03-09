@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Link, Routes, Route } from "react-router-dom";
-import { routesObject } from "./Routes";
+import { routesObject, AdminRoute } from "./Routes";
 import Structure from "../layout/Structure";
 import ErrorPage from "../components/Common/ErrorPage";
 import Breadcrumbs from "./Breadcrumbs";
@@ -14,15 +14,11 @@ export default function RoutesPath() {
     <>
       <Routes>
         {routesObject.map((route, index) => {
-          const expressionElement = route.layout === "user" ? (
+          const expressionElement = route.layout ? (
             <Structure>
               {route.element}
             </Structure>
-          ) : (
-            <AdminStructure>
-              {route.element}
-            </AdminStructure>
-          )
+          ) : (route.element);
 
           return (
             <Route
@@ -48,6 +44,37 @@ export default function RoutesPath() {
           )
         })}
         <Route path="*" element={<ErrorPage />} />
+        <Route path="/admin/" >
+          {AdminRoute.map((route, index) => {
+            const expressionElement = route.layout ? (
+              <AdminStructure>
+                {route.element}
+              </AdminStructure>
+            ) : (route.element);
+            return (
+              <Route
+                key={index}
+                element={
+                  route.isAuth ? (
+                    <>
+                      <ProtectedRoute type="admin">
+                        {expressionElement}
+                      </ProtectedRoute>
+                    </>
+                  ) : route.isLoggedIn ? (
+                    <LoginProtectedRoute type="admin">
+                      {expressionElement}
+                    </LoginProtectedRoute>
+                  ) : (
+                    expressionElement
+                  )
+                }
+                path={route.path}
+              >
+              </Route>
+            )
+          })}
+        </Route>
 
       </Routes>
     </>

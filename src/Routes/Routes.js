@@ -11,6 +11,7 @@ import Wishlist from "../components/Pages/Wishlist/Wishlist";
 import ErrorPage from "../components/Common/ErrorPage";
 import SignIn from "../components/Auth/SignIn";
 import SignUp from "../components/Auth/SignUp";
+import AdminSigngnIn from "../components/Auth/Admin/SignIn";
 import ChangePassword from "../components/Auth/ChangePassword";
 import UserAccount from "../components/Pages/Account/UserAccount";
 import ForgetPassword from "../components/Auth/ForgetPassword";
@@ -25,7 +26,7 @@ export const routesObject = [
     path: '/',
     element: <Home />,
     name: 'Home',
-    layout: "user",
+    layout: true,
     isAuth: false
   },
   {
@@ -34,7 +35,7 @@ export const routesObject = [
     element: <Shop />,
     errorElement: <ErrorPage />,
     name: 'Shops',
-    layout: "user",
+    layout: true,
     isAuth: false
   },
   {
@@ -43,7 +44,7 @@ export const routesObject = [
     element: <ShopDetails />,
     errorElement: <ErrorPage />,
     name: 'ShoppingDetails',
-    layout: "user",
+    layout: true,
     isAuth: false
   },
   {
@@ -51,7 +52,7 @@ export const routesObject = [
     path: 'checkout',
     element: <Checkout />,
     name: 'Checkout',
-    layout: "user",
+    layout: true,
     isAuth: true,
   },
   {
@@ -59,7 +60,7 @@ export const routesObject = [
     path: 'contact',
     element: <Contact />,
     name: 'Contact',
-    layout: "user",
+    layout: true,
     isAuth: false
   },
   {
@@ -67,7 +68,7 @@ export const routesObject = [
     path: 'about',
     element: <About />,
     name: 'About',
-    layout: "user",
+    layout: true,
     isAuth: false
 
 
@@ -77,7 +78,7 @@ export const routesObject = [
     path: 'help',
     element: <Help />,
     name: 'Help',
-    layout: "user",
+    layout: true,
     isAuth: false
   },
   {
@@ -85,7 +86,7 @@ export const routesObject = [
     path: 'faqs',
     element: <FAQs />,
     name: 'Faqs',
-    layout: "user",
+    layout: true,
     isAuth: false
   },
   {
@@ -93,7 +94,7 @@ export const routesObject = [
     path: 'cart',
     element: <Cart />,
     name: 'Cart',
-    layout: "user",
+    layout: true,
     isAuth: true
   },
   {
@@ -101,7 +102,7 @@ export const routesObject = [
     path: 'wishlist',
     element: <Wishlist />,
     name: 'wishlist',
-    layout: "user",
+    layout: true,
     isAuth: true
   },
   {
@@ -109,7 +110,7 @@ export const routesObject = [
     path: 'signup',
     element: <SignUp />,
     name: 'SignUp',
-    layout: "user",
+    layout: true,
     isAuth: false,
     isLoggedIn: true
   },
@@ -118,7 +119,7 @@ export const routesObject = [
     path: 'signin',
     element: <SignIn />,
     name: 'SignIn',
-    layout: "user",
+    layout: true,
     isAuth: false,
     isLoggedIn: true
   },
@@ -127,7 +128,7 @@ export const routesObject = [
     path: 'forget-password',
     element: <ForgetPassword />,
     name: 'ForgetPassword',
-    layout: "user",
+    layout: true,
     isAuth: false
 
   },
@@ -136,7 +137,7 @@ export const routesObject = [
     path: 'reset-password',
     element: <ResetPassword />,
     name: 'ResetPassword',
-    layout: "user",
+    layout: true,
     isAuth: false
   },
   {
@@ -144,7 +145,7 @@ export const routesObject = [
     path: 'account',
     element: <UserAccount />,
     name: 'MyAccount',
-    layout: "user",
+    layout: true,
     isAuth: true
   },
   {
@@ -152,7 +153,7 @@ export const routesObject = [
     path: 'change-password',
     element: <ChangePassword />,
     name: 'MyAccount',
-    layout: "user",
+    layout: true,
     isAuth: true
   },
   {
@@ -160,7 +161,7 @@ export const routesObject = [
     path: 'my-order',
     element: <UserOrders />,
     name: 'MyOrder',
-    layout: "user",
+    layout: true,
     isAuth: true
   },
   {
@@ -168,54 +169,26 @@ export const routesObject = [
     path: 'back',
     element: <BackToHome />,
     name: 'MyOrder',
-    layout: "user",
+    layout: true,
     isAuth: false
   }
 ];
 
-const AdminRoute = [
+export const AdminRoute = [
   {
     id: 1,
-    path: 'admin',
+    path: '',
     element: <Admin />,
     name: 'Admin',
-    layout: "admin",
-    isAuth: false
+    layout: true,
+    isAuth: true
   },
-
   {
-    id: 1,
-    path: 'admin',
-    element: <Admin />,
-    name: 'Admin',
-    layout: "admin",
-    isAuth: false
-  },
-
-  {
-    id: 1,
-    path: 'admin',
-    element: <Admin />,
-    name: 'Admin',
-    layout: "admin",
-    isAuth: false
-  },
-
-  {
-    id: 1,
-    path: 'admin',
-    element: <Admin />,
-    name: 'Admin',
-    layout: "admin",
-    isAuth: false
-  },
-
-  {
-    id: 1,
-    path: 'admin',
-    element: <Admin />,
-    name: 'Admin',
-    layout: "admin",
+    id: 2,
+    path: 'signin',
+    element: <AdminSigngnIn />,
+    name: 'signin',
+    layout: false,
     isAuth: false
   },
 ];
