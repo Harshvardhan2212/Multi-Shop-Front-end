@@ -19,6 +19,7 @@ import ResetPassword from "../components/Auth/ResetPassword";
 import UserOrders from "../components/Pages/MyOrders/UserOrders";
 import BackToHome from "../components/Common/BackToHome";
 import Admin from "../components/Pages/Admin/Admin";
+import Category from "../components/Pages/Admin/Category";
 
 export const routesObject = [
   {
@@ -191,4 +192,12 @@ export const AdminRoute = [
     layout: false,
     isAuth: false
   },
+  {
+    id: 3,
+    path: 'category',
+    element: <Category />,
+    name: 'Category',
+    layout: true,
+    isAuth: true
+  }
 ];
