@@ -39,17 +39,17 @@ export default function SignUp() {
         formData.append("password_confirmation", values.password_confirmation);
         formData.append("phone_number", values.phone_number);
 
-      let res =  await postUserSignUpData(formData);
+        let res = await postUserSignUpData(formData);
         if (res?.data?.success === true) {
           navigate("/signin");
-          toast.success("SignUp Successfully");
+          toast.success(res?.data?.message);
         } else {
           navigate("/signup");
-          toast.error("Invalid Email");
+          toast.error(res?.data?.message);
         }
       },
     });
-    
+
 
   const togglePasswordVisibility = () => setShowPassword(!showPassword);
   const toggleConfirmPasswordVisibility = () =>
@@ -226,7 +226,7 @@ export default function SignUp() {
                         </span>
                       </div>
                       {errors.password_confirmation &&
-                      touched.password_confirmation ? (
+                        touched.password_confirmation ? (
                         <p className="form-error text-danger">
                           {errors.password_confirmation}
                         </p>

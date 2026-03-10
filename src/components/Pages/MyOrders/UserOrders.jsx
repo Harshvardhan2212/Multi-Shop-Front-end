@@ -52,24 +52,24 @@ export default function RowExpansionDemo() {
   const rowExpansionTemplate = (data) => {
     const orderItemDetails = orderItems?.data || [];
 
-if (isFetching) {
-  return <div>Loading...</div>;
-}
+    if (isFetching) {
+      return <div>Loading...</div>;
+    }
 
-return (
-  <div className="container">
-    <div className="p-3">
-      <h5>Order Items for {data.order_no}</h5>
-      <DataTable value={orderItemDetails}>
-        <Column field="id" header="Item ID" sortable />
-        <Column field="product_detail.name" header="Product Name" sortable />
-        <Column field="quantity" header="Quantity" sortable />
-        <Column field="subtotal" header="Subtotal" body={(rowData) => formatCurrency(rowData.subtotal)} sortable />
-        <Column header="Product Image" body={(rowData) => <img src={rowData.product_image} alt={rowData.product_detail.name} width="64px" />} />
-      </DataTable>
-    </div>
-  </div>
-);
+    return (
+      <div className="container">
+        <div className="p-3">
+          <h5>Order Items for {data.order_no}</h5>
+          <DataTable value={orderItemDetails}>
+            <Column field="id" header="Item ID" sortable />
+            <Column field="product_detail.name" header="Product Name" sortable />
+            <Column field="quantity" header="Quantity" sortable />
+            <Column field="subtotal" header="Subtotal" body={(rowData) => formatCurrency(rowData.subtotal)} sortable />
+            <Column header="Product Image" body={(rowData) => <img src={rowData.product_image} alt={rowData.product_detail.name} width="64px" />} />
+          </DataTable>
+        </div>
+      </div>
+    );
   };
 
   if (isLoading) {
@@ -83,7 +83,7 @@ return (
   return (
     <>
       <Breadcrumbs />
-  
+
       <div className="container-fluid">
         <h2 className="section-title position-relative text-uppercase mx-xl-5 mb-4">
           <span className="bg-secondary pr-3">My Orders</span>

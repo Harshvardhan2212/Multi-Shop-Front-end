@@ -37,11 +37,11 @@ export default function SignIn() {
         if (res?.data?.success === true) {
           localStorage.setItem("token", res?.data?.token);
           dispatch(getUserToken(res?.data?.token));
-          toast.success("Successfully Logged In");
+          toast.success(res?.data?.message);
           // refetch();
           navigate("/");
         } else {
-          toast.error("Invalid email or password");
+          toast.error(res?.data?.message);
         }
       },
     });

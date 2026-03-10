@@ -1,11 +1,12 @@
-import React from "react";
 import { Navigate } from "react-router-dom";
 
-const LoginProtectedRoute = ({ children }) => {
-  let token = localStorage.getItem("token");
+const LoginProtectedRoute = ({ children, type = 'user' }) => {
+  let tokenVar = (type === 'user') ? 'token' : 'adminToken';
+  let token = localStorage.getItem(tokenVar);
+
 
   return <div>{!token ? children : <Navigate to={"/"} />}</div>;
 };
 
 export default LoginProtectedRoute;
-  
+

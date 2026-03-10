@@ -1,43 +1,82 @@
 import React from "react";
 import { BrowserRouter as Router, Link, Routes, Route } from "react-router-dom";
-import { routesObject } from "./Routes";
+import { routesObject, AdminRoute } from "./Routes";
 import Structure from "../layout/Structure";
 import ErrorPage from "../components/Common/ErrorPage";
 import Breadcrumbs from "./Breadcrumbs";
 import ProtectedRoute from "./ProtectedRoute";
 import LoginProtectedRoute from "./LoginProtectedRoute";
+import AdminStructure from "../layout/AdminStructure";
 
 export default function RoutesPath() {
-  
+
   return (
-      <>
-    <Routes>
-      {routesObject.map((route, index) => (
-        <Route
-        key={index}
-        element={
-          route.isAuth ? (
-            <>
-            <ProtectedRoute><Structure>{route.element}</Structure></ProtectedRoute>
-            </>
-            ) : route.isLoggedIn ? (
-              <LoginProtectedRoute><Structure>{route.element}</Structure></LoginProtectedRoute>
-            ) : <Structure>{route.element}</Structure>
-          }
-          path={route.path}
-        >
-          {route.children &&
-            route.children.map((paths, index) => (
+    <>
+      <Routes>
+        {routesObject.map((route, index) => {
+          const expressionElement = route.layout ? (
+            <Structure>
+              {route.element}
+            </Structure>
+          ) : (route.element);
+
+          return (
+            <Route
+              key={index}
+              element={
+                route.isAuth ? (
+                  <>
+                    <ProtectedRoute>
+                      {expressionElement}
+                    </ProtectedRoute>
+                  </>
+                ) : route.isLoggedIn ? (
+                  <LoginProtectedRoute>
+                    {expressionElement}
+                  </LoginProtectedRoute>
+                ) : (
+                  expressionElement
+                )
+              }
+              path={route.path}
+            >
+            </Route>
+          )
+        })}
+        <Route path="*" element={<ErrorPage />} />
+        <Route path="/admin/" >
+          {AdminRoute.map((route, index) => {
+            const expressionElement = route.layout ? (
+              <AdminStructure>
+                {route.element}
+              </AdminStructure>
+            ) : (route.element);
+            return (
               <Route
                 key={index}
-                element={paths.element}
-                path={paths.path}
-              ></Route>
-            ))}
+                element={
+                  route.isAuth ? (
+                    <>
+                      <ProtectedRoute type="admin">
+                        {expressionElement}
+                      </ProtectedRoute>
+                    </>
+                  ) : route.isLoggedIn ? (
+                    <LoginProtectedRoute type="admin">
+                      {expressionElement}
+                    </LoginProtectedRoute>
+                  ) : (
+                    expressionElement
+                  )
+                }
+                path={route.path}
+              >
+              </Route>
+            )
+          })}
         </Route>
-      ))}
-      <Route path="*" element={<ErrorPage />} />
-    </Routes>
+
+      </Routes>
     </>
   );
 }
