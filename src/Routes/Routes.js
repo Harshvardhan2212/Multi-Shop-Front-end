@@ -194,7 +194,7 @@ export const AdminRoute = [
   },
   {
     id: 3,
-    path: 'category',
+    path: 'ategory',
     element: <Category />,
     name: 'Category',
     layout: true,

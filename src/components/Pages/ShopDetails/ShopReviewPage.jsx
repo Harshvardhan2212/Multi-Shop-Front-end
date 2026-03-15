@@ -13,13 +13,9 @@ import { Rating } from "react-simple-star-rating";
 export default function ShopReviewPage() {
   const { id } = useParams();
   const { data } = useGetProductDataByIdQuery(id);
-  const { data: additionalinfo } = useGetAdditionalInformationQuery(
-    data?.data?.id
-  );
   const [addReview] = useAddReviewMutation();
   const { data: reviews } = useGetProductReviewQuery(data?.data?.id);
   const handleRating = (rate) => {
-    console.log(rate);
     formik.setFieldValue("rating", rate);
   };
   const formik = useFormik({
@@ -32,7 +28,6 @@ export default function ShopReviewPage() {
       formvalue.append("comment", values.comment);
       formvalue.append("rating", values.rating);
 
-      console.log(values, "values of comment");
       await addReview({ id: data?.data?.id, review: formvalue });
     },
   });
@@ -67,18 +62,16 @@ export default function ShopReviewPage() {
             <div className="tab-content">
               <div className="tab-pane fade show active" id="tab-pane-1">
                 <h4 className="mb-3">Product Description</h4>
-                <p>{additionalinfo?.data?.product_information?.description}</p>
+                <p>{data?.data?.description}</p>
               </div>
               <div className="tab-pane fade" id="tab-pane-2">
                 <h4 className="mb-3">Additional Information</h4>
                 <p
                   dangerouslySetInnerHTML={{
                     __html:
-                      additionalinfo?.data?.product_information
-                        ?.additional_information,
+                      data?.data?.long_description,
                   }}
                 >
-                
                 </p>
               </div>
               <div className="tab-pane fade" id="tab-pane-3">
@@ -86,7 +79,7 @@ export default function ShopReviewPage() {
                   <div className="col-md-6">
                     <h4 className="mb-4">
                       {reviews?.data?.product_review?.length} review for "
-                      {reviews?.data?.name}"
+                      {reviews?.data?.name || data?.data?.name}"
                     </h4>
                     <div className="review-sidebar">
                       {reviews?.data?.product_review?.map((data, index) => (

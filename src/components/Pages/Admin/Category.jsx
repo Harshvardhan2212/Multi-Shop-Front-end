@@ -21,6 +21,13 @@ const Category = () => {
     'category-slug',
     'sub-category'
   ];
+  const heeaderMap = {
+    'name': 'Name',
+    'description': 'Description',
+    'category_slug': 'Category-slug',
+    'Sub_category': 'Sub-category',
+    'image': 'Banner'
+  };
 
   const skeletonRows = Array.from({ length: 5 });
 
@@ -30,7 +37,6 @@ const Category = () => {
         value={isLoading ? skeletonRows : ""}
         tableStyle={{ minWidth: "60rem" }}
       >
-
         {headerMap.map((item) => (
           <Column
             key={item}

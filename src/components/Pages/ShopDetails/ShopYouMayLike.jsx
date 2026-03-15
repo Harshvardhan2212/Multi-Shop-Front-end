@@ -1,5 +1,5 @@
 import React from "react";
-import {  useGetProductYouMakeLikeDataQuery } from "../../../Redux/Slices/ProductApi";
+import { useGetProductYouMakeLikeDataQuery } from "../../../Redux/Slices/ProductApi";
 import { Link, useParams } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
@@ -9,7 +9,6 @@ import RatingIntegration from "../../Common/RatingIntegration";
 export default function ShopYouMayLike() {
   const { id } = useParams();
   const { data } = useGetProductYouMakeLikeDataQuery(id)
-  console.log("dataaaaaaaaaaaa", data?.data);
 
   return (
     <div className="container-fluid py-5">
@@ -40,7 +39,7 @@ export default function ShopYouMayLike() {
               <div className="product-item bg-light mb-4">
                 <div className="product-img position-relative overflow-hidden">
                   <img
-                    className="img-fluid w-100 object-fit-cover" 
+                    className="img-fluid w-100 object-fit-cover"
                     src={data?.product_image}
                     alt=""
                     style={{ height: "410px" }}
@@ -70,7 +69,7 @@ export default function ShopYouMayLike() {
                   </Link>
                   <div className="d-flex align-items-center justify-content-center mt-2">
                     <h5>
-                      ${data.price} 
+                      ${data.price}
                     </h5>
                   </div>
                   <div className="d-flex align-items-center justify-content-center mb-1">

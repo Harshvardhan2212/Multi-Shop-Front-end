@@ -33,7 +33,7 @@ export default function ProductFeatured() {
               <div className="product-img position-relative overflow-hidden">
                 <img
                   className="img-fluid w-100 object-fit-contain"
-                  src={data?.product_image}
+                  src={data?.product_images?.[0]?.image}
                   alt=""
                   style={{ height: "425px" }}
                 />
@@ -49,7 +49,7 @@ export default function ProductFeatured() {
                   </Link>
 
                   <Link
-                    to={`/shop/${data.slug}`}
+                    to={`/shop/${data.id}`}
                     className="btn btn-outline-dark btn-square"
                   >
                     <i className="fa fa-search" />

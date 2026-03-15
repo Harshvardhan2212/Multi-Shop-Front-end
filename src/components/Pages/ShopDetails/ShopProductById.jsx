@@ -19,7 +19,7 @@ export default function ShopProductById() {
       color: "",
       quantity: 1,
     },
-    onSubmit:async (values) => {
+    onSubmit: async (values) => {
       const formitem = new FormData();
       formitem.append("size", values.size);
       formitem.append("color", values.color);
@@ -34,11 +34,11 @@ export default function ShopProductById() {
   });
 
   const handlePlus = () => {
-    formik.setFieldValue("quantity",formik.values.quantity += 1)
+    formik.setFieldValue("quantity", formik.values.quantity += 1)
   };
   const handleMinus = () => {
     if (formik.values.quantity > 1) {
-      formik.setFieldValue("quantity",formik.values.quantity -= 1)
+      formik.setFieldValue("quantity", formik.values.quantity -= 1)
     }
   };
   return (
@@ -189,9 +189,9 @@ export default function ShopProductById() {
                   </div>
                 </div>
                 {/* <Link to={"/cart"}> */}
-                  <button className="btn btn-primary px-3" type="submit">
-                    <i className="fa fa-shopping-cart mr-1" /> Add To Cart
-                  </button>
+                <button className="btn btn-primary px-3" type="submit">
+                  <i className="fa fa-shopping-cart mr-1" /> Add To Cart
+                </button>
                 {/* </Link> */}
               </div>
             </form>
